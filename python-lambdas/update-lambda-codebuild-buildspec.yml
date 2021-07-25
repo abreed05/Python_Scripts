@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+       - pwd
+       - ls
+       - cd ./Get-fortune
+       - pip3 install --target  ./package mysql-connector-python 
+       - cd package
+       - zip -r ../my-deployment-package.zip .
+       - cd .. 
+       - zip -g my-deployment-package.zip  get-fortune.py
+artifacts:
+  files:
+    - './Get-fortune/my-deployment-package.zip'
